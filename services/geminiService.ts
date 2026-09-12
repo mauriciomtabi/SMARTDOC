@@ -159,7 +159,7 @@ export const processFinanceAudio = async (audioBlob: Blob, mimeType: string = 'a
               1. TIPO (Receita/Despesa): Se o usuário falar "gastei", "comprei", "paguei", "despesa", é 'expense'. Se falar "recebi", "ganhei", "entrou", "salário", é 'income'.
               2. VALOR: Extraia o valor numérico exato.
               3. DATA: Se mencionado "hoje", "ontem", ou uma data específica, calcule/extraia a data correspondente (formato YYYY-MM-DD). Se não mencionado, use a data de hoje.
-              4. STATUS: Se o usuário disser que "já pagou", "foi pago", "comprei" (passado), o status é 'paid'. Se disser "vou pagar", "vence dia", "pendente", é 'pending'.
+              4. STATUS: Se o usuário disser explicitamente que "já pagou", "já foi pago", "está pago", o status é 'paid'. Se disser "vou pagar", "vence dia", "pendente", "a pagar", ou não especificar explicitamente que já foi pago, o status padrão é 'pending'.
               5. DESCRIÇÃO: Crie uma descrição curta e direta baseada no que foi dito.
               6. CATEGORIA: Sugira uma categoria (ex: Alimentação, Transporte, Moradia, Lazer, Saúde, Educação, etc).
               7. FORMA DE PAGAMENTO (CRÍTICO): 

@@ -85,7 +85,7 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({ session, dem
         description: '',
         amount: 0,
         type: 'expense',
-        status: 'paid',
+        status: 'pending',
         date: new Date().toISOString().split('T')[0],
         category: '',
         paymentMethod: 'Pix'
@@ -437,7 +437,7 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({ session, dem
             description: '',
             amount: 0,
             type: 'expense',
-            status: 'paid',
+            status: 'pending',
             date: new Date().toISOString().split('T')[0],
             category: categories[0]?.name || 'Geral',
             paymentMethod: 'Pix'
@@ -801,7 +801,7 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({ session, dem
                 description: data.description || 'Voz',
                 amount: isNaN(cleanAmount) ? 0 : cleanAmount,
                 type: data.type || 'expense',
-                status: data.status === 'unknown' ? 'pending' : (data.status || 'paid'),
+                status: data.status === 'paid' ? 'paid' : 'pending',
                 date: new Date().toISOString().split('T')[0],
                 category: data.category || categories[0]?.name || 'Outros',
                 paymentMethod: data.paymentMethod || 'Pix'
@@ -1630,6 +1630,26 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({ session, dem
                                     onClick={() => setFormData({...formData, type: 'income'})}
                                 >
                                     Receita
+                                </button>
+                            </div>
+
+                            {/* Status Toggle (Pendente / Pago) */}
+                            <div className="flex bg-gray-50 p-1.5 rounded-xl">
+                                <button 
+                                    type="button"
+                                    className={`flex-1 py-2.5 rounded-lg font-bold text-xs md:text-sm transition-all flex items-center justify-center gap-1.5 ${formData.status === 'pending' ? 'bg-white text-amber-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'}`} 
+                                    onClick={() => setFormData({...formData, status: 'pending'})}
+                                >
+                                    <Clock size={16} />
+                                    Pendente
+                                </button>
+                                <button 
+                                    type="button"
+                                    className={`flex-1 py-2.5 rounded-lg font-bold text-xs md:text-sm transition-all flex items-center justify-center gap-1.5 ${formData.status === 'paid' ? 'bg-white text-emerald-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'}`} 
+                                    onClick={() => setFormData({...formData, status: 'paid'})}
+                                >
+                                    <CheckCircle size={16} />
+                                    {formData.type === 'income' ? 'Recebido' : 'Pago'}
                                 </button>
                             </div>
                             {/* Date & Category Row */}

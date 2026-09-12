@@ -82,7 +82,7 @@ create table if not exists transactions (
   description text not null,
   amount numeric not null,
   type text not null, -- 'income' or 'expense'
-  status text not null, -- 'paid' or 'pending'
+  status text not null default 'pending', -- 'paid' or 'pending'
   category text,
   payment_method text, 
   installments_info text, -- Novo campo para parcelamento (ex: '1/4')
@@ -90,9 +90,10 @@ create table if not exists transactions (
   created_at bigint
 );
 
--- MIGRATION: Execute se a tabela já existir e estiver faltando a coluna
+-- MIGRATION: Execute se a tabela já existir e estiver faltando a coluna ou default
 alter table transactions add column if not exists payment_method text;
 alter table transactions add column if not exists installments_info text;
+alter table transactions alter column status set default 'pending';
 
 alter table transactions enable row level security;
 
