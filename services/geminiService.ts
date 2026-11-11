@@ -3,8 +3,11 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { DocCategory } from "../types";
 
-// Initialize Gemini Client
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize Gemini Client Lazily to prevent crash when key is not yet set
+const getGenAIClient = () => {
+  const apiKey = process.env.API_KEY || process.env.GEMINI_API_KEY || '';
+  return new GoogleGenAI({ apiKey: apiKey || 'dummy-key-for-init' });
+};
 
 // Helper to convert blob to base64
 export const fileToGenerativePart = async (file: File | Blob): Promise<string> => {
@@ -27,7 +30,7 @@ export const processNoteAudio = async (audioBlob: Blob, mimeType: string = 'audi
   try {
     const base64Data = await fileToGenerativePart(audioBlob);
 
-    const response = await ai.models.generateContent({
+    const response = await getGenAIClient().models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: {
         parts: [
@@ -81,7 +84,7 @@ export const processNoteAudio = async (audioBlob: Blob, mimeType: string = 'audi
 
 export const processNoteImage = async (base64Image: string, mimeType: string = 'image/jpeg') => {
   try {
-    const response = await ai.models.generateContent({
+    const response = await getGenAIClient().models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: {
         parts: [
@@ -139,7 +142,7 @@ export const processFinanceAudio = async (audioBlob: Blob, mimeType: string = 'a
 
     // Using gemini-3-flash-preview as the standard multimodal model.
     // Ensure the mimeType passed matches the recording.
-    const response = await ai.models.generateContent({
+    const response = await getGenAIClient().models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: {
         parts: [
@@ -211,7 +214,7 @@ export const analyzeDocument = async (base64Image: string, mimeType: string = 'i
   try {
     const foldersString = availableFolders.length > 0 ? availableFolders.join(', ') : "Geral";
 
-    const response = await ai.models.generateContent({
+    const response = await getGenAIClient().models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: {
         parts: [

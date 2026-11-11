@@ -7,6 +7,7 @@ import { FinanceDashboard } from './components/FinanceDashboard';
 import { NotesDashboard } from './components/NotesDashboard';
 import { Auth } from './components/Auth';
 import { Onboarding, TourStep } from './components/Onboarding';
+import { BrandLogo } from './components/BrandLogo';
 import { supabase } from './services/supabase';
 import { Search, ChevronLeft, Calendar, Tag, Info, Trash2, Filter, FolderPlus, Download, FolderOpen, Settings, X, Check, ChevronDown, AlertTriangle, ZoomIn, ZoomOut, Maximize2, Move, FolderInput, Edit, Save, Camera, MoreVertical, LayoutGrid, LogOut, Loader2, Star, FileText, Paperclip, RotateCw, Minus, Plus, Expand, Smile, Scan, HelpCircle, Share2, MessageCircle, File } from 'lucide-react';
 import { v4 as uuidv4 } from 'uuid';
@@ -797,9 +798,10 @@ const App: React.FC = () => {
 
   if (loadingInitial) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 gap-4">
-        <img src="https://i.postimg.cc/ZKPfX7xK/Chat-GPT-Image-16-de-fev-de-2026-13-26-05-removebg-preview.png" alt="Logo" className="w-20 h-20 object-contain animate-pulse rounded-2xl shadow-sm" />
-        <Loader2 className="animate-spin text-brand-600" size={32} />
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 gap-4">
+        <BrandLogo variant="icon" size="xl" className="animate-pulse" />
+        <span className="text-xl font-bold text-white tracking-tight">Smart<span className="text-brand-500">Doc</span></span>
+        <Loader2 className="animate-spin text-brand-500 mt-1" size={22} />
       </div>
     );
   }

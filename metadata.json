@@ -1,6 +1,6 @@
 {
-  "name": "SmartDoc Organizer v.18",
-  "description": "Um sistema inteligente para digitalizar, categorizar e consultar documentos pessoais e fiscais usando IA.",
+  "name": "SmartDoc Finance",
+  "description": "Sistema de controle e inteligência financeira com IA, digitalização de notas, controle de despesas e relatórios.",
   "requestFramePermissions": [
     "camera"
   ]

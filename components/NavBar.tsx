@@ -3,6 +3,7 @@
 import React from 'react';
 import { Files, LogOut, DollarSign, Wallet, HelpCircle, NotebookPen } from 'lucide-react';
 import { View } from '../types';
+import { BrandLogo } from './BrandLogo';
 
 interface NavBarProps {
   currentView: View;
@@ -81,11 +82,8 @@ export const NavBar: React.FC<NavBarProps> = ({ currentView, onChangeView, onSig
 
       {/* Desktop Top Bar - Dark Theme */}
       <div className="hidden md:flex fixed top-0 left-0 right-0 bg-gray-900/90 backdrop-blur-md border-b border-gray-800 px-8 py-4 justify-between items-center z-50 shadow-sm">
-        <div className="flex items-center gap-3 cursor-pointer group" onClick={() => onChangeView(View.HOME)}>
-          <img src="https://i.postimg.cc/ZKPfX7xK/Chat-GPT-Image-16-de-fev-de-2026-13-26-05-removebg-preview.png" alt="Logo" className="w-12 h-12 object-contain rounded-xl" />
-          <h1 className="text-xl font-bold text-white">
-            SmartDoc
-          </h1>
+        <div className="cursor-pointer group" onClick={() => onChangeView(View.HOME)}>
+          <BrandLogo variant="full" theme="dark" size="md" />
         </div>
         
         <div className="flex gap-4 items-center">

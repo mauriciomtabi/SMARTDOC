@@ -971,7 +971,7 @@ export const FinanceDashboard: React.FC<FinanceDashboardProps> = ({ session, dem
 
                 {/* Footer */}
                 <div className="mt-8 text-center pt-4">
-                    <p className="text-[10px] text-gray-400">Gerado por SmartDoc Organizer</p>
+                    <p className="text-[10px] text-gray-400 font-medium">Gerado por SmartDoc Finance</p>
                     <p className="text-[10px] text-gray-300">{new Date().toLocaleString('pt-BR')}</p>
                 </div>
             </div>

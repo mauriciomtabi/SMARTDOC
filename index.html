@@ -2,19 +2,20 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/ZKPfX7xK/Chat-GPT-Image-16-de-fev-de-2026-13-26-05-removebg-preview.png" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="theme-color" content="#4f46e5" />
+    <meta name="theme-color" content="#059669" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <link rel="apple-touch-icon" href="https://i.postimg.cc/ZKPfX7xK/Chat-GPT-Image-16-de-fev-de-2026-13-26-05-removebg-preview.png" />
+    <meta name="apple-mobile-web-app-title" content="SmartDoc" />
     
-    <title>SmartDoc Organizer</title>
+    <title>SmartDoc</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -25,21 +26,31 @@
             },
             colors: {
               brand: {
-                50: '#eef2ff',
-                100: '#e0e7ff',
-                200: '#c7d2fe',
-                300: '#a5b4fc',
-                400: '#818cf8',
-                500: '#6366f1', // Indigo primary
-                600: '#4f46e5',
-                700: '#4338ca',
-                800: '#3730a3',
-                900: '#312e81',
+                50: '#ecfdf5',
+                100: '#d1fae5',
+                200: '#a7f3d0',
+                300: '#6ee7b7',
+                400: '#34d399',
+                500: '#10b981', // Emerald primary
+                600: '#059669', // Core action
+                700: '#047857',
+                800: '#065f46',
+                900: '#064e3b',
+                950: '#022c22',
+              },
+              finance: {
+                income: '#10b981',
+                expense: '#ef4444',
+                pending: '#f59e0b',
+                dark: '#090e1a',
+                card: '#0f172a',
+                cyan: '#06b6d4',
               }
             },
             boxShadow: {
               'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
-              'glow': '0 0 15px rgba(99, 102, 241, 0.3)',
+              'glow': '0 0 20px rgba(16, 185, 129, 0.35)',
+              'glow-cyan': '0 0 20px rgba(6, 182, 212, 0.35)',
             }
           }
         }

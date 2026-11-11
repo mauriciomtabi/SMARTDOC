@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { supabase } from '../services/supabase';
 import { Mail, Lock, Loader2, ArrowRight, Eye, EyeOff } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 
 export const Auth: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -19,13 +20,30 @@ export const Auth: React.FC = () => {
 
     try {
       if (mode === 'register') {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
         });
         if (error) throw error;
-        setMessage('Cadastro realizado! Verifique seu e-mail para confirmar (se necessário) ou faça login.');
-        setMode('login'); // Switch to login after success
+
+        // Se a confirmação de e-mail estiver desabilitada no Supabase, a sessão já é retornada de imediato
+        if (data?.session) {
+          return;
+        }
+
+        // Tenta login automático logo após o registro
+        const { error: signInError } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+
+        if (signInError) {
+          if (signInError.message.toLowerCase().includes('email not confirmed')) {
+            setError('A confirmação de e-mail ainda está ativa no painel do Supabase. Para novos cadastros entrarem direto sem e-mail, desative a opção "Confirm email" em Authentication > Providers > Email no painel do Supabase.');
+          } else {
+            setError(signInError.message);
+          }
+        }
       } else {
         const { error } = await supabase.auth.signInWithPassword({
           email,
@@ -45,9 +63,9 @@ export const Auth: React.FC = () => {
       <div className="w-full max-w-md bg-white rounded-3xl shadow-xl p-8 animate-in fade-in zoom-in-95 duration-500">
         
         <div className="flex flex-col items-center mb-8">
-          <img src="https://i.postimg.cc/ZKPfX7xK/Chat-GPT-Image-16-de-fev-de-2026-13-26-05-removebg-preview.png" alt="Logo" className="w-20 h-20 object-contain rounded-2xl mb-4 shadow-sm" />
-          <h1 className="text-2xl font-bold text-gray-900">SmartDoc Organizer</h1>
-          <p className="text-gray-500 mt-1">Suas finanças e documentos organizados</p>
+          <BrandLogo variant="icon" size="xl" className="mb-4" />
+          <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Smart<span className="text-brand-600">Doc</span></h1>
+          <p className="text-gray-500 text-sm mt-1">Organização e gestão inteligente com IA</p>
         </div>
 
         <form onSubmit={handleAuth} className="space-y-4">

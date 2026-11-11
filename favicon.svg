@@ -1,7 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
-  <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
-  <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
-  <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
-  <path d="M7 12h10"/>
+<svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Minimalist Dark Squircle Base -->
+  <rect width="512" height="512" rx="140" fill="#090e1a"/>
+  
+  <!-- Subtle Document Silhouette -->
+  <path 
+    d="M 172 116 H 292 L 360 184 V 384 C 360 397 349 408 336 408 H 172 C 159 408 148 397 148 384 V 140 C 148 127 159 116 172 116 Z" 
+    stroke="#10b981" 
+    stroke-width="28" 
+    stroke-linejoin="round"
+  />
+  
+  <!-- Precision Corner Fold -->
+  <path 
+    d="M 292 116 V 184 H 360" 
+    stroke="#10b981" 
+    stroke-width="28" 
+    stroke-linejoin="round"
+  />
+  
+  <!-- 2 Minimalist Clean Data Lines -->
+  <line x1="204" y1="272" x2="304" y2="272" stroke="#10b981" stroke-width="24" stroke-linecap="round"/>
+  <line x1="204" y1="332" x2="264" y2="332" stroke="#34d399" stroke-width="24" stroke-linecap="round"/>
 </svg>
